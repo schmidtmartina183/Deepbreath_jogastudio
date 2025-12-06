@@ -300,3 +300,59 @@ footer{
         margin: 10px 0;
     }
 }
+
+/* --- Óratípus kérdőív (Órarend oldal) --- */
+.quiz-container {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f3efe2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.quiz-container h3 {
+    margin-bottom: 10px;
+    color: #6d6849;
+}
+
+.quiz-container p {
+    margin-bottom: 8px;
+}
+
+.quiz-question {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.quiz-options label {
+    display: block;
+    margin-bottom: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.quiz-options input {
+    margin-right: 8px;
+}
+
+.quiz-result {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #d1c8aa;
+    line-height: 1.5;
+}
+
+.quiz-result strong {
+    color: #6d6849;
+}
+
+/* hogy a gombok egymás mellett is jól nézzenek ki a resultban */
+.quiz-container .btn {
+    margin-top: 10px;
+    margin-right: 10px;
+}
