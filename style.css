@@ -355,10 +355,6 @@ p.elerhetosegeink{
         z-index: 1000;
     }
 
-    .hamburger-menu {
-        display: none; /* Asztalon elrejtjük a hamburger ikont */
-    }
-
     .cardindex {
         flex-direction: column;
         padding: 10px;
@@ -389,6 +385,17 @@ p.elerhetosegeink{
         font-size: 2em;
     }
 
+    .hamburger-menu {
+        display: block; /* Látható mobilon */
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 1.8em;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1000;
+    }
+    
     .cards {
         grid-template-columns: 1fr;
     }
@@ -397,3 +404,4 @@ p.elerhetosegeink{
         padding: 15px;
     }
 }
+
