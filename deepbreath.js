@@ -164,4 +164,164 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
+
+    // --- Óratípus ajánló kérdőív logika (Órarend oldal) ---
+    const quizForm = document.getElementById('ora-kerdoiv');
+
+    if (quizForm) {
+        const resultBox = document.getElementById('quiz-result');
+
+        quizForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(quizForm);
+
+            const tapasztalat = formData.get('tapasztalat');
+            const cel = formData.get('cel');
+            const intenzitas = formData.get('intenzitas');
+            const egeszseg = formData.get('egeszseg');
+            const babamamaAllapot = formData.get('babamama');
+
+            // Pontszámok az egyes óratípusokra
+            const scores = {
+                kezdo: 0,
+                pilates: 0,
+                gerinc: 0,
+                hot: 0,
+                babamama: 0,
+                flow: 0,
+                regeneralo: 0
+            };
+
+            // 1. Tapasztalat
+            if (tapasztalat === 'teljesen_kezdő') {
+                scores.kezdo += 3;
+                scores.regeneralo += 2;
+            } else if (tapasztalat === 'kezdő_néhány_óra') {
+                scores.kezdo += 2;
+                scores.pilates += 1;
+                scores.gerinc += 1;
+            } else if (tapasztalat === 'középhaladó_haladó') {
+                scores.flow += 2;
+                scores.hot += 2;
+                scores.pilates += 1;
+            }
+
+            // 2. Cél
+            if (cel === 'stresszcsökkentés') {
+                scores.regeneralo += 3;
+                scores.kezdo += 1;
+                scores.gerinc += 1;
+            } else if (cel === 'tartásjavítás') {
+                scores.pilates += 3;
+                scores.gerinc += 1;
+            } else if (cel === 'hátfájdalom') {
+                scores.gerinc += 3;
+                scores.pilates += 1;
+            } else if (cel === 'intenzív_izzadós') {
+                scores.hot += 3;
+                scores.flow += 2;
+            } else if (cel === 'babás') {
+                scores.babamama += 5;
+            } else if (cel === 'lágy_regenerálás') {
+                scores.regeneralo += 3;
+                scores.kezdo += 1;
+            }
+
+            // 3. Intenzitás
+            if (intenzitas === 'nagyon_kíméletes') {
+                scores.regeneralo += 2;
+                scores.gerinc += 2;
+                scores.kezdo += 1;
+                scores.babamama += 1;
+            } else if (intenzitas === 'közepes') {
+                scores.kezdo += 2;
+                scores.pilates += 2;
+                scores.gerinc += 1;
+                scores.flow += 1;
+            } else if (intenzitas === 'pörgős') {
+                scores.hot += 3;
+                scores.flow += 3;
+            }
+
+            // 4. Egészségi állapot
+            if (egeszseg === 'jelentős_fájdalom') {
+                scores.gerinc += 3;
+                scores.regeneralo += 2;
+            } else if (egeszseg === 'enyhe_fájdalom') {
+                scores.gerinc += 2;
+                scores.pilates += 1;
+                scores.regeneralo += 1;
+            } else if (egeszseg === 'nincsen') {
+                scores.flow += 1;
+                scores.hot += 1;
+                scores.pilates += 1;
+            }
+
+            // 5. Baba-mama állapot
+            if (babamamaAllapot === 'igen') {
+                scores.babamama += 5;
+            } else {
+                // ha nem babás, ne ajánljuk elsődlegesen a baba-mama órát
+                scores.babamama = 0;
+            }
+
+            // Legmagasabb pontszámú óratípus kiválasztása
+            let bestTypeKey = null;
+            let bestScore = -Infinity;
+
+            Object.keys(scores).forEach(key => {
+                if (scores[key] > bestScore) {
+                    bestScore = scores[key];
+                    bestTypeKey = key;
+                }
+            });
+
+            const typeTexts = {
+                kezdo: {
+                    name: 'Kezdő jóga',
+                    desc: 'Az első órádnak egy lassabb, vezetett Kezdő jóga órát ajánlunk, ahol biztonságosan megtanulhatod az alapokat.'
+                },
+                pilates: {
+                    name: 'Pilates',
+                    desc: 'Számodra a Pilates tűnik ideálisnak: fókusz a core izmokon, tartásjavítás és kontrollált erősítés.'
+                },
+                gerinc: {
+                    name: 'Gerinc jóga',
+                    desc: 'A Gerinc jóga órák célzottan segíthetnek a hát- és derékfájdalmak enyhítésében, kíméletes, de hatékony gyakorlással.'
+                },
+                hot: {
+                    name: 'Hot jóga',
+                    desc: 'Szereted a kihívásokat: a Hot jóga intenzív, izzasztó gyakorlás, amely erősít és méregtelenít is.'
+                },
+                babamama: {
+                    name: 'Baba-mama jóga',
+                    desc: 'A válaszaid alapján számodra a Baba-mama jóga a legjobb indulás: gyengéd, szülés utáni regeneráció babával együtt.'
+                },
+                flow: {
+                    name: 'Flow jóga',
+                    desc: 'A dinamikus Flow jóga jól illik hozzád: folyamatos mozgás, légzés és erő fejlesztése egyben.'
+                },
+                regeneralo: {
+                    name: 'Regeneráló jóga',
+                    desc: 'Most a pihenés és feltöltődés az első: a Regeneráló jóga hosszú, passzív pózokkal segít teljesen ellazulni.'
+                }
+            };
+
+            const chosen = typeTexts[bestTypeKey] || typeTexts.kezdo;
+
+            resultBox.innerHTML = `
+                <p><strong>Ajánlott első óratípusod:</strong> ${chosen.name}</p>
+                <p>${chosen.desc}</p>
+                <p>
+                    <a href="2orak.html" class="btn">Bővebb leírás az órákról</a>
+                    <a href="5foglalas.html" class="btn">Időpont foglalása</a>
+                </p>
+            `;
+
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+
 });
