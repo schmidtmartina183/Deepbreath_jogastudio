@@ -6,7 +6,7 @@
     <title>Órarend - DeepBreath Stúdió</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="kepek/logo.ico">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,8 +41,6 @@
         <option value="regeneralo">Regeneráló</option>
     </select>
 
-
-
     <div id="orarend" class="cards">
         <div class="card ora" data-tipus="kezdo">Hétfő 18:00 - Kezdő</div>
         <div class="card ora" data-tipus="kezdo">Kedd 18:00 - Kezdő</div>
@@ -68,27 +66,29 @@
         <div class="card ora" data-tipus="babamama">Péntek 15:00 - Babamama</div>    
         <div class="card ora" data-tipus="babamama">Szombat 15:00 - Babamama</div>
         
-        <div class="card ora" data-tipus="flow">Hetfő 8:00 - Flow</div>
+        <div class="card ora" data-tipus="flow">Hétfő 8:00 - Flow</div>
         <div class="card ora" data-tipus="flow">Kedd 8:00 - Flow</div>
         <div class="card ora" data-tipus="flow">Szerda 8:00 - Flow</div>
         <div class="card ora" data-tipus="flow">Csütörtök 8:00 - Flow</div>
 
-        <div class="card ora" data-tipus="regeneralo">Hetfő 18:00 - Regeneráló</div>
-        <div class="card ora" data-tipus="regeneralo">Kedd 18:00 - Regeneráló</div>
-        <div class="card ora" data-tipus="regeneralo">Szerda 18:00 - Regeneráló</div>
-        <div class="card ora" data-tipus="regeneralo">Szombat 18:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Hétfő 19:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Kedd 19:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Szerda 19:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Szombat 19:00 - Regeneráló</div>
     </div>
 
-<br><br>
+    <br><br>
 
-        <div class="intro-text" style="margin-bottom: 30px; line-height: 1.6;">
-        <p style="font-style: italic;">Ha bizonytalan vagy, melyik óratípus a legmegfelelőbb számodra, olvasd el az alábbi rövid ajánlót, vagy keress meg minket telefonon / e-mailben, és segítünk hogy, melyik óra illik legjobban a céljaidhoz!</p>   
-       
-<br>
-       
-        <h3>Rövid Óraajánló:</h3> <br>
+    <div class="intro-text" style="margin-bottom: 30px; line-height: 1.6;">
+        <p style="font-style: italic;">
+            Ha bizonytalan vagy, melyik óratípus a legmegfelelőbb számodra, olvasd el az alábbi rövid ajánlót,
+            vagy töltsd ki a kérdőívet, és segítünk, hogy melyik óra illik legjobban a céljaidhoz!
+        </p>   
+        <br>
+        <h3>Rövid Óraajánló:</h3> 
+        <br>
         <ul>
-            <li> <strong>Kezdő Jóga:</strong> Ha még sosem jógáztál, és a biztonságos alapokat szeretnéd megtanulni.</li>
+            <li><strong>Kezdő Jóga:</strong> Ha még sosem jógáztál, és a biztonságos alapokat szeretnéd megtanulni.</li>
             <li><strong>Pilates:</strong> Ha a törzsizmok (core) erősítése és a tartásjavítás a fő cél.</li>
             <li><strong>Gerinc Jóga:</strong> Ha sokat ülsz, és csökkenteni szeretnéd a hátfájdalmat célzott nyújtással és erősítéssel.</li>
             <li><strong>Hot Jóga:</strong> Ha haladó vagy, és intenzív, méregtelenítő fizikai kihívásra vágysz fűtött teremben.</li>
@@ -96,6 +96,116 @@
             <li><strong>Baba-mama Jóga:</strong> Ha szülés után szeretnél regenerálódni, és a babáddal jönnél együtt edzeni.</li>
             <li><strong>Regeneráló Jóga:</strong> Ha pihenésre, stresszoldásra van szükséged, és mély ellazulást keresel passzív pózokban.</li>
         </ul>
+    </div>
+
+    <!-- KÉRDŐÍV: melyik óratípus illik hozzád? -->
+    <div class="quiz-container">
+        <h3>Melyik óratípus illik hozzád leginkább?</h3>
+        <p>Válaszolj néhány rövid kérdésre, és ajánlunk egy órát első alkalomra.</p>
+
+        <form id="ora-kerdoiv">
+            <div class="quiz-question">
+                <p>1. Mennyire vagy tapasztalt jógában vagy pilatesben?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="tapasztalat" value="teljesen_kezdő" checked>
+                        Teljesen kezdő vagyok
+                    </label>
+                    <label>
+                        <input type="radio" name="tapasztalat" value="kezdő_néhány_óra">
+                        Néhány órán már részt vettem
+                    </label>
+                    <label>
+                        <input type="radio" name="tapasztalat" value="középhaladó_haladó">
+                        Rendszeresen gyakorlok / haladó vagyok
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Mi a legfontosabb célod az órákkal?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="cel" value="stresszcsökkentés" checked>
+                        Stresszcsökkentés, lelki egyensúly
+                    </label>
+                    <label>
+                        <input type="radio" name="cel" value="tartásjavítás">
+                        Tartásjavítás, core izmok erősítése
+                    </label>
+                    <label>
+                        <input type="radio" name="cel" value="hátfájdalom">
+                        Hát- vagy derékfájdalom csökkentése
+                    </label>
+                    <label>
+                        <input type="radio" name="cel" value="intenzív_izzadós">
+                        Intenzív, „izzadós” edzés
+                    </label>
+                    <label>
+                        <input type="radio" name="cel" value="babás">
+                        Szülés utáni regeneráció, babával együtt
+                    </label>
+                    <label>
+                        <input type="radio" name="cel" value="lágy_regenerálás">
+                        Nagyon lágy, pihentető óra
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Milyen terhelést szeretnél?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="intenzitas" value="nagyon_kíméletes" checked>
+                        Nagyon kíméletes, óvatos
+                    </label>
+                    <label>
+                        <input type="radio" name="intenzitas" value="közepes">
+                        Közepes terhelés
+                    </label>
+                    <label>
+                        <input type="radio" name="intenzitas" value="pörgős">
+                        Pörgős, intenzív óra
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <p>4. Van jelenleg mozgásszervi panaszaid (pl. hát-, derék-, térdfájás)?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="egeszseg" value="jelentős_fájdalom" checked>
+                        Igen, jelentősebb panaszok
+                    </label>
+                    <label>
+                        <input type="radio" name="egeszseg" value="enyhe_fájdalom">
+                        Csak enyhe, időszakos fájdalom
+                    </label>
+                    <label>
+                        <input type="radio" name="egeszseg" value="nincsen">
+                        Nincsenek ilyen panaszaim
+                    </label>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <p>5. Várandós vagy, vagy szülés után 1 éven belül vagy?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="babamama" value="igen">
+                        Igen
+                    </label>
+                    <label>
+                        <input type="radio" name="babamama" value="nem" checked>
+                        Nem
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Ajánlott óratípus mutatása</button>
+
+            <div id="quiz-result" class="quiz-result" aria-live="polite"></div>
+        </form>
     </div>
 
 </section>
@@ -107,4 +217,3 @@
 </footer>
 </body>
 </html>
-
