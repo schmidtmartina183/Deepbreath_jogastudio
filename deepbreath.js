@@ -1,6 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     const contentSection = document.querySelector('.content');
+
+    // --- Görgetésfigyelő Logika ---
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Csak mobil nézetben futtatjuk a logikát (900px alatt)
+        if (window.innerWidth <= 900) { 
+            // Lefelé görgetés: Eltüntetjük a fejlécet, miután 150px-nél többet görgettünk
+            if (currentScroll > lastScrollTop && currentScroll > 150) { 
+                header.classList.add('scrolled-up');
+            } 
+            // Felfelé görgetés vagy a tetején vagyunk: Megjelenítjük
+            else {
+                header.classList.remove('scrolled-up');
+            }
+        } else {
+            // Asztali nézetben mindig legyen látható (eltávolítjuk az osztályt)
+             header.classList.remove('scrolled-up');
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    }, false);
+    // ----------------------------------------------------
+
     const filterDropdown = document.getElementById('filter');
     
     if (filterDropdown) {
