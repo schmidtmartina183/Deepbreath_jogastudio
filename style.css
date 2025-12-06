@@ -293,17 +293,12 @@ p.elerhetosegeink{
     display: none; 
 }
 
-/* --- MEDIA QUERIES --- */
-
-/* Mobil/Tablet nézet (900px alatt) */
 @media (max-width: 900px) {
-    /* Navbar: Vízszintes marad, de kompaktabb */
     .navbar {
         flex-direction: row; 
-        justify-content: space-around; 
+        justify-content: space-between; 
         padding: 10px 15px; 
-        background: transparent;
-        display: flex; 
+        background: #e6e0d2;
     }
 
     header {
@@ -311,7 +306,12 @@ p.elerhetosegeink{
         top: 0;
         box-shadow: 0 1px 5px rgba(0,0,0,0.08); 
         padding: 0; 
-        background: #e6e0d2; /* A header background-color is a bézs legyen */
+        background: #e6e0d2; 
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        display: flex; /* Megjelenítjük, ha az 'active' class rajta van */
     }
 
     .logo {
@@ -319,24 +319,46 @@ p.elerhetosegeink{
     }   
 
     .nav-links {
-        flex-direction: row; 
-        gap: 15px; 
-        margin-top: 0; 
-        width: auto;
+        display: none; /* Alapból elrejtjük */
+        flex-direction: column; 
+        width: 100%;
+        position: absolute; /* Ráhelyezi a menüt a tartalom fölé */
+        top: 60px; /* A navbar magassága alá */
+        left: 0;
+        background: #e6e0d2; 
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
     }
 
     .nav-links li {
         text-align: center;
         width: auto;
-        padding: 0;
+        padding: 5px 0;
     }
     
     .nav-links a {
-        font-size: 0.9em; 
-        padding: 5px; 
+        font-size: 1em; 
+        padding: 10px 0;
+        width: 100%;
+        display: block; 
     }
 
-    /* A többi reszponzív elem marad: */
+    .hamburger-menu {
+        display: block; /* Látható mobilon */
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 1.8em;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1000;
+    }
+
+    .hamburger-menu {
+        display: none; /* Asztalon elrejtjük a hamburger ikont */
+    }
+
     .cardindex {
         flex-direction: column;
         padding: 10px;
