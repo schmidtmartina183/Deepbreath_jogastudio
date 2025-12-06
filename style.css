@@ -5,18 +5,20 @@
     box-sizing:border-box;
 }
 
+/* --- HEADER ÉS STICKY NAVIGÁCIÓ (Görgetéskor eltűnik) --- */
 header {
     width: 100%;
     z-index: 1000;
     position: sticky; 
     top: 0;
+    /* SZÍNJAVÍTÁS: Egységes bézs háttér a nav és a header számára is */
     background-color: #e6e0d2; 
     box-shadow:0 2px 10px rgba(0,0,0,0.1); 
     /* JS elrejtéshez szükséges transition */
     transition: transform 0.3s ease-in-out; 
 }
 
-/* Ez a szabály elrejti a fejlécet a képernyő teteje fölé, amikor a JS hozzáadja az osztályt */
+/* JS által hozzáadott osztály: Eltünteti a fejlécet a képernyő teteje fölé */
 header.scrolled-up {
     transform: translateY(-100%); 
 }
@@ -291,12 +293,17 @@ p.elerhetosegeink{
     display: none; 
 }
 
+/* --- MEDIA QUERIES --- */
+
+/* Mobil/Tablet nézet (900px alatt) */
 @media (max-width: 900px) {
+    /* Navbar: Vízszintes marad, de kompaktabb */
     .navbar {
-        flex-direction: column;
-        padding: 10px 20px;
+        flex-direction: row; 
+        justify-content: space-around; 
+        padding: 10px 15px; 
         background: transparent;
-        display: flex; /* Visszaállítjuk, hogy látható legyen */
+        display: flex; 
     }
 
     header {
@@ -304,26 +311,32 @@ p.elerhetosegeink{
         top: 0;
         box-shadow: 0 1px 5px rgba(0,0,0,0.08); 
         padding: 0; 
-        background: #fcfcfc; 
+        background: #e6e0d2; /* A header background-color is a bézs legyen */
     }
 
     .logo {
-        margin-bottom: 5px; 
+        margin-bottom: 0; 
     }   
 
     .nav-links {
-        flex-direction: column;
-        gap: 5px;
-        margin-top: 5px; /* Kisebb rés felül */
-        width: 100%;
+        flex-direction: row; 
+        gap: 15px; 
+        margin-top: 0; 
+        width: auto;
     }
 
     .nav-links li {
         text-align: center;
-        width: 100%;
-        padding: 3px 0;
+        width: auto;
+        padding: 0;
+    }
+    
+    .nav-links a {
+        font-size: 0.9em; 
+        padding: 5px; 
     }
 
+    /* A többi reszponzív elem marad: */
     .cardindex {
         flex-direction: column;
         padding: 10px;
@@ -340,6 +353,7 @@ p.elerhetosegeink{
     }
 }
 
+/* Kisebb mobil nézet (768px alatt) */
 @media (max-width: 768px) {
     .content, .foglalas {
         padding: 15px;
@@ -361,4 +375,3 @@ p.elerhetosegeink{
         padding: 15px;
     }
 }
-
