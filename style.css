@@ -310,10 +310,6 @@ p.elerhetosegeink{
         transition: transform 0.3s ease-in-out;
     }
 
-    .nav-links.active {
-        display: flex; /* Megjelenítjük, ha az 'active' class rajta van */
-    }
-
     .logo {
         margin-bottom: 0; 
     }   
@@ -329,6 +325,10 @@ p.elerhetosegeink{
         padding: 10px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         z-index: 2000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Megjelenítjük, ha az 'active' class rajta van */
     }
 
     .nav-links li {
@@ -385,17 +385,6 @@ p.elerhetosegeink{
         font-size: 2em;
     }
 
-    .hamburger-menu {
-        display: block; /* Látható mobilon */
-        background: none;
-        border: none;
-        color: #333;
-        font-size: 1.8em;
-        cursor: pointer;
-        padding: 5px;
-        z-index: 1000;
-    }
-    
     .cards {
         grid-template-columns: 1fr;
     }
@@ -404,5 +393,3 @@ p.elerhetosegeink{
         padding: 15px;
     }
 }
-
-
