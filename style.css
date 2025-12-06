@@ -288,13 +288,13 @@ p.elerhetosegeink{
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
-        padding: 15px 20px;
+        padding: 10px 20px;
         background: transparent;
     }
 
     .nav-links {
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
         margin-top: 10px;
         width: 100%;
     }
@@ -302,7 +302,7 @@ p.elerhetosegeink{
     .nav-links li {
         text-align: center;
         width: 100%;
-        padding: 5px 0;
+        padding: 3px 0;
     }
 
     .cardindex {
@@ -327,7 +327,7 @@ p.elerhetosegeink{
     }
     
     .navbar {
-        padding: 15px;
+        padding: 10px;
     }
 
     .foglalas h1 {
@@ -341,4 +341,5 @@ p.elerhetosegeink{
     .elerhetosegeink {
         padding: 15px;
     }
+
 }
