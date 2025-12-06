@@ -1,399 +1,167 @@
-/* full & body */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+document.addEventListener('DOMContentLoaded', function() {
 
-/* --- HEADER ÉS STICKY NAVIGÁCIÓ (Görgetéskor eltűnik) --- */
-header {
-    width: 100%;
-    z-index: 1000;
-    position: sticky; 
-    top: 0;
-    /* SZÍNJAVÍTÁS: Egységes bézs háttér a nav és a header számára is */
-    background-color: #e6e0d2; 
-    box-shadow:0 2px 10px rgba(0,0,0,0.1); 
-    /* JS elrejtéshez szükséges transition */
-    transition: transform 0.3s ease-in-out; 
-}
+    const contentSection = document.querySelector('.content');
 
-/* JS által hozzáadott osztály: Eltünteti a fejlécet a képernyő teteje fölé */
-header.scrolled-up {
-    transform: translateY(-100%); 
-}
+    /* --- FEJLÉC ELTŰNÉS GÖRGETÉSKOR --- */
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
 
-body{
-    font-family:'Lora', serif;
-    background:#fcfcfc; 
-    color:#333;
-}
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 120px;
-    background:#e6e0d2; 
-}
+        if (window.innerWidth <= 900) { 
+            if (currentScroll > lastScrollTop && currentScroll > 150) { 
+                header.classList.add('scrolled-up');
+            } else {
+                header.classList.remove('scrolled-up');
+            }
+        } else {
+            header.classList.remove('scrolled-up');
+        }
 
-.logo {
-    color: #6d6849; 
-    font-weight: bold;
-    font-size: 1.6em; 
-}
-
-.nav-links{
-    display:flex;
-    list-style:none;
-    gap:40px;
-}
-
-.nav-links a{
-    text-decoration: none;
-    display: flex;
-    color:#333;
-    font-weight:bold;
-    transition: color 0.3s;
-    padding: 5px 0;
-}
-
-.nav-links a:hover{
-    color: white;
-}
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    }, false);
 
 
-.foglalas{
-    padding:120px 20px;
-    text-align:center;
-    background:#bfb486; 
-    color:#333; 
-}
+    /* --- HAMBURGER MENÜ --- */
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
 
-.btn{
-    display:inline-block;
-    background:#6d6849; 
-    color:white;
-    padding:12px 25px; 
-    border-radius:5px; 
-    text-decoration:none;
-    margin-top:20px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    font-weight: bold;
-}
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active'); 
+        });
 
-.btn:hover {
-    background: #5a553c; 
-    transform: translateY(-2px);
-}
-
-.content{
-    padding:30px;
-    max-width: 1200px; 
-    margin: 0 auto
-}
-
-.content h2, .cardindex h1 {
-    color: #6d6849; 
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.studiokep {
-    width: 23%;
-    height: 300px; 
-    object-fit: cover;
-    margin: 0 5px;
-    border-radius: 8px; 
-    transition: opacity 0.3s;
-}
-
-.studiokep:hover {
-    opacity: 0.9;
-}
-
-.cardindex {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px; 
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    margin-top: 20px;
-}
-
-.card{
-    background:#ffffff; 
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05); 
-    text-align: center;
-    transition: transform 0.3s;
-    border: 1px solid #eee; 
-}
-
-.card:hover {
-    transform: translateY(-5px); 
-    box-shadow:0 8px 20px rgba(0,0,0,0.1); 
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #5a553c; 
-}
-
-
-footer{
-    text-align:center;
-    padding:25px;
-    background:#333;
-    color:#fcfcfc;
-    margin-top:50px;
-}
-
-
-.orakep{
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.oraleiras {
-    font-size: 0.95em;
-    color: #555;
-    line-height: 1.5;
-}
-
-
-.elerhetosegeink{
-    padding: 25px;
-    background: #f7f7f7; 
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-p.elerhetosegeink{
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-#foglalas{
-    display: flex;
-    flex-direction: column;
-    gap: 5px; 
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-#foglalas label{
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-#foglalas input:not([type="radio"]), #foglalas select, #foglalas textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-#foglalas input:focus, #foglalas select:focus, #foglalas textarea:focus {
-    border-color: #bfb68e; 
-    outline: none;
-}
-
-#foglalas h2, .elerhetosegeink h3 {
-    color: #6d6849; 
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.success-message {
-    background: #e6e0d2; 
-    border: 1px solid #bfb68e;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 600px;
-    margin: 40px auto;
-}
-
-.success-message h2 {
-    color: #6d6849; 
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-/* Hibajelzés stílusa */
-.error-msg {
-    color: #c0392b; 
-    font-size: 0.9em;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: normal;
-}
-
-.input-error {
-    border: 2px solid #c0392b !important; 
-    box-shadow: 0 0 5px rgba(192, 57, 43, 0.3);
-}
-
-#filter {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 300px;
-    display: block;
-    box-sizing: border-box;
-    color: #555;
-}
-
-.card.ora {
-    font-size: 1.05em;
-    font-weight: bold;
-    background: #f7f7f7; 
-    transition: background-color 0.2s;
-    text-align: left; 
-    padding-left: 30px;
-    border: none;
-}
-
-.card.ora:nth-child(even) {
-    background: #efefef; 
-}
-
-.card.ora:hover {
-    background: #e6e0d2; 
-    transform: none; 
-}
-
-.intro-text li strong {
-    color: #6d6849; 
-    font-weight: 700;
-    font-size: 1.05em;
-}
-
-.hidden {
-    display: none; 
-}
-
-@media (max-width: 900px) {
-    .navbar {
-        flex-direction: row; 
-        justify-content: space-between; 
-        padding: 10px 15px; 
-        background: #e6e0d2;
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     }
 
-    header {
-        position: sticky; 
-        top: 0;
-        box-shadow: 0 1px 5px rgba(0,0,0,0.08); 
-        padding: 0; 
-        background: #e6e0d2; 
-        transition: transform 0.3s ease-in-out;
+
+    /* --- ÓRAREND SZŰRŐ --- */
+    const filterDropdown = document.getElementById('filter');
+
+    if (filterDropdown) {
+        const allCards = document.querySelectorAll('.card.ora'); 
+
+        function filterSchedule(selectedType) {
+            allCards.forEach(card => {
+                const cardType = card.getAttribute('data-tipus');
+                if (selectedType === 'osszes' || cardType === selectedType) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        filterDropdown.addEventListener('change', function() {
+            filterSchedule(this.value);
+        });
+
+        filterSchedule(filterDropdown.value);
     }
 
-    .nav-links.active {
-        display: flex; /* Megjelenítjük, ha az 'active' class rajta van */
-    }
 
-    .logo {
-        margin-bottom: 0; 
-    }   
+    /* --- FOGLALÁS FORM VALIDÁCIÓ --- */
+    const form = document.getElementById('foglalas');
 
-    .nav-links {
-        display: none; /* Alapból elrejtjük */
-        flex-direction: column; 
-        width: 100%;
-        position: absolute; /* Ráhelyezi a menüt a tartalom fölé */
-        top: 60px; /* A navbar magassága alá */
-        left: 0;
-        background: #e6e0d2; 
-        padding: 10px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
+    if (form) {
+        const fullnameInput = document.getElementById('fullname');
+        const emailInput = document.getElementById('email');
+        const telefonInput = document.getElementById('telefon');
+        const tipusInput = document.getElementById('tipus');
+        const datumInput = document.getElementById('datum');
+        const termsInput = document.getElementById('terms');
 
-    .nav-links li {
-        text-align: center;
-        width: auto;
-        padding: 5px 0;
-    }
-    
-    .nav-links a {
-        font-size: 1em; 
-        padding: 10px 0;
-        width: 100%;
-        display: block; 
-    }
+        const errorName = document.getElementById('error-name');
+        const errorEmail = document.getElementById('error-email');
+        const errorTelszam = document.getElementById('error-telszam');
+        const errorType = document.getElementById('error-type');
+        const errorDate = document.getElementById('error-date');
+        const errorTerms = document.getElementById('error-terms');
 
-    .hamburger-menu {
-        display: block; /* Látható mobilon */
-        background: none;
-        border: none;
-        color: #333;
-        font-size: 1.8em;
-        cursor: pointer;
-        padding: 5px;
-        z-index: 1000;
-    }
+        function clearErrors() {
+            document.querySelectorAll('.error-msg').forEach(e => e.textContent = '');
+            document.querySelectorAll('.input-error').forEach(i => i.classList.remove('input-error'));
+        }
 
-    .hamburger-menu {
-        display: none; /* Asztalon elrejtjük a hamburger ikont */
-    }
+        function validateForm(event) {
+            let isValid = true;
+            clearErrors();
 
-    .cardindex {
-        flex-direction: column;
-        padding: 10px;
-        gap: 20px;
-    }
+            if (fullnameInput.value.trim() === "") {
+                errorName.textContent = "A név megadása kötelező!";
+                fullnameInput.classList.add('input-error');
+                isValid = false;
+            }
 
-    .cardindex h1 {
-        margin-bottom: 20px;
-    }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() === "") {
+                errorEmail.textContent = "E-mail cím megadása kötelező!";
+                emailInput.classList.add('input-error');
+                isValid = false;
+            } else if (!emailRegex.test(emailInput.value.trim())) {
+                errorEmail.textContent = "Kérlek, érvényes e-mailt adj meg!";
+                emailInput.classList.add('input-error');
+                isValid = false;
+            }
 
-    .studiokep {
-        width: 100%;
-        margin: 10px 0;
-    }
-}
+            const phoneRegex = /^\+?(\d[\s-]?){8,15}$/;
+            if (telefonInput.value.trim() === "") {
+                errorTelszam.textContent = "Telefonszám megadása kötelező!";
+                telefonInput.classList.add('input-error');
+                isValid = false;
+            } else if (!phoneRegex.test(telefonInput.value.trim().replace(/[\s-]/g, ''))) {
+                errorTelszam.textContent = "Adj meg érvényes telefonszámot!";
+                telefonInput.classList.add('input-error');
+                isValid = false;
+            }
 
-/* Kisebb mobil nézet (768px alatt) */
-@media (max-width: 768px) {
-    .content, .foglalas {
-        padding: 15px;
-    }
-    
-    .navbar {
-        padding: 10px;
-    }
+            if (tipusInput.value === "") {
+                errorType.textContent = "Kérlek válassz típust!";
+                tipusInput.classList.add('input-error');
+                isValid = false;
+            }
 
-    .foglalas h1 {
-        font-size: 2em;
-    }
+            if (datumInput.value === "") {
+                errorDate.textContent = "Dátum megadása kötelező!";
+                datumInput.classList.add('input-error');
+                isValid = false;
+            }
 
-    .cards {
-        grid-template-columns: 1fr;
+            if (!termsInput.checked) {
+                errorTerms.textContent = "El kell fogadnod a feltételeket!";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                event.preventDefault();
+                handleSuccess();
+            }
+        }
+
+        form.addEventListener('submit', validateForm);
+
+        function handleSuccess() {
+            form.style.display = 'none';
+            const contactInfo = document.querySelector('.elerhetosegeink');
+            if (contactInfo) contactInfo.style.display = 'none';
+
+            const successMessage = document.createElement('div');
+            successMessage.classList.add('success-message');
+            successMessage.innerHTML = `
+                <h2>🧘‍♀️ Sikeres Jelentkezés! 🧘‍♂️</h2>
+                <p>Hamarosan küldünk visszaigazolást a <strong>${emailInput.value.trim()}</strong> címre.</p>
+                <a class="btn" href="3orarend.html">Vissza az órarendhez</a>
+            `;
+
+            contentSection.appendChild(successMessage);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
-    
-    .elerhetosegeink {
-        padding: 15px;
-    }
-}
+});
