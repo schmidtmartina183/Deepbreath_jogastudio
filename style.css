@@ -10,7 +10,7 @@ header {
     z-index: 1000;
     position: sticky; 
     top: 0;
-    background-color: #a7a470; 
+    background-color: #e6e0d2; 
     box-shadow:0 2px 10px rgba(0,0,0,0.1); 
     /* JS elrejtéshez szükséges transition */
     transition: transform 0.3s ease-in-out; 
@@ -361,3 +361,4 @@ p.elerhetosegeink{
         padding: 15px;
     }
 }
+
