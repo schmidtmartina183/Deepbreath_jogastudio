@@ -12,6 +12,13 @@ header {
     top: 0;
     background-color: #a7a470; 
     box-shadow:0 2px 10px rgba(0,0,0,0.1); 
+    /* JS elrejtéshez szükséges transition */
+    transition: transform 0.3s ease-in-out; 
+}
+
+/* Ez a szabály elrejti a fejlécet a képernyő teteje fölé, amikor a JS hozzáadja az osztályt */
+header.scrolled-up {
+    transform: translateY(-100%); 
 }
 
 body{
@@ -130,7 +137,7 @@ body{
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Enyhe felemelkedés */
+    transform: translateY(-5px); 
     box-shadow:0 8px 20px rgba(0,0,0,0.1); 
 }
 
@@ -231,7 +238,7 @@ p.elerhetosegeink{
 
 /* Hibajelzés stílusa */
 .error-msg {
-    color: #c0392b; /* Visszafogottabb, sötét vörös hibaüzenet */
+    color: #c0392b; 
     font-size: 0.9em;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -266,11 +273,11 @@ p.elerhetosegeink{
 }
 
 .card.ora:nth-child(even) {
-    background: #efefef; /* Csíkozás (zebra) a könnyebb olvashatóságért */
+    background: #efefef; 
 }
 
 .card.ora:hover {
-    background: #e6e0d2; /* Nagyon világos bézs/sárga hover */
+    background: #e6e0d2; 
     transform: none; 
 }
 
@@ -280,7 +287,6 @@ p.elerhetosegeink{
     font-size: 1.05em;
 }
 
-/* ez kell az orarendhez hogyha leszurtunk ne mutassa amit nem kell */
 .hidden {
     display: none; 
 }
@@ -290,12 +296,25 @@ p.elerhetosegeink{
         flex-direction: column;
         padding: 10px 20px;
         background: transparent;
+        display: flex; /* Visszaállítjuk, hogy látható legyen */
     }
+
+    header {
+        position: sticky; 
+        top: 0;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.08); 
+        padding: 0; 
+        background: #fcfcfc; 
+    }
+
+    .logo {
+        margin-bottom: 5px; 
+    }   
 
     .nav-links {
         flex-direction: column;
         gap: 5px;
-        margin-top: 10px;
+        margin-top: 5px; /* Kisebb rés felül */
         width: 100%;
     }
 
@@ -341,5 +360,4 @@ p.elerhetosegeink{
     .elerhetosegeink {
         padding: 15px;
     }
-
 }
