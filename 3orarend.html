@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend - DeepBreath Stúdió</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="kepek/logo.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">DeepBreath</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="2orak.html">Órák</a></li>
+            <li><a href="3orarend.html">Órarend</a></li>
+            <li><a href="4arak.html">Árak</a></li>
+            <li><a href="5foglalas.html">Foglalás</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="content">
+    <h2>Órarend</h2>
+    
+    <label>Óratípus szűrés:</label>
+    <select id="filter">
+        <option value="osszes">Órák:</option>
+        <option value="kezdo">Kezdő</option>
+        <option value="pilates">Pilates</option>
+        <option value="gerinc">Gerinc</option>
+        <option value="hot">Hot</option>
+        <option value="babamama">Babamama</option>
+        <option value="flow">Flow</option>
+        <option value="regeneralo">Regeneráló</option>
+    </select>
+
+
+
+    <div id="orarend" class="cards">
+        <div class="card ora" data-tipus="kezdo">Hétfő 18:00 - Kezdő</div>
+        <div class="card ora" data-tipus="kezdo">Kedd 18:00 - Kezdő</div>
+        <div class="card ora" data-tipus="kezdo">Szerda 18:00 - Kezdő</div>
+        <div class="card ora" data-tipus="kezdo">Csütörtök 18:00 - Kezdő</div>
+        <div class="card ora" data-tipus="kezdo">Péntek 18:00 - Kezdő</div>
+
+        <div class="card ora" data-tipus="pilates">Hétfő 13:30 - Pilates</div>
+        <div class="card ora" data-tipus="pilates">Szerda 13:30 - Pilates</div>
+        <div class="card ora" data-tipus="pilates">Péntek 13:30 - Pilates</div>
+
+        <div class="card ora" data-tipus="gerinc">Kedd 13:30 - Gerinc</div>
+        <div class="card ora" data-tipus="gerinc">Csütörtök 13:30 - Gerinc</div>
+        <div class="card ora" data-tipus="gerinc">Szombat 13:30 - Gerinc</div>
+
+        <div class="card ora" data-tipus="hot">Hétfő 10:00 - Hot</div>
+        <div class="card ora" data-tipus="hot">Kedd 14:00 - Hot</div>
+        <div class="card ora" data-tipus="hot">Szerda 10:00 - Hot</div>
+        <div class="card ora" data-tipus="hot">Csütörtök 14:00 - Hot</div>
+        <div class="card ora" data-tipus="hot">Péntek 10:00 - Hot</div>    
+        <div class="card ora" data-tipus="hot">Szombat 14:00 - Hot</div>
+
+        <div class="card ora" data-tipus="babamama">Péntek 15:00 - Babamama</div>    
+        <div class="card ora" data-tipus="babamama">Szombat 15:00 - Babamama</div>
+        
+        <div class="card ora" data-tipus="flow">Hetfő 8:00 - Flow</div>
+        <div class="card ora" data-tipus="flow">Kedd 8:00 - Flow</div>
+        <div class="card ora" data-tipus="flow">Szerda 8:00 - Flow</div>
+        <div class="card ora" data-tipus="flow">Csütörtök 8:00 - Flow</div>
+
+        <div class="card ora" data-tipus="regeneralo">Hetfő 18:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Kedd 18:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Szerda 18:00 - Regeneráló</div>
+        <div class="card ora" data-tipus="regeneralo">Szombat 18:00 - Regeneráló</div>
+    </div>
+
+<br><br>
+
+        <div class="intro-text" style="margin-bottom: 30px; line-height: 1.6;">
+        <p style="font-style: italic;">Ha bizonytalan vagy, melyik óratípus a legmegfelelőbb számodra, olvasd el az alábbi rövid ajánlót, vagy keress meg minket telefonon / e-mailben, és segítünk hogy, melyik óra illik legjobban a céljaidhoz!</p>   
+       
+<br>
+       
+        <h3>Rövid Óraajánló:</h3> <br>
+        <ul>
+            <li> <strong>Kezdő Jóga:</strong> Ha még sosem jógáztál, és a biztonságos alapokat szeretnéd megtanulni.</li>
+            <li><strong>Pilates:</strong> Ha a törzsizmok (core) erősítése és a tartásjavítás a fő cél.</li>
+            <li><strong>Gerinc Jóga:</strong> Ha sokat ülsz, és csökkenteni szeretnéd a hátfájdalmat célzott nyújtással és erősítéssel.</li>
+            <li><strong>Hot Jóga:</strong> Ha haladó vagy, és intenzív, méregtelenítő fizikai kihívásra vágysz fűtött teremben.</li>
+            <li><strong>Flow Jóga:</strong> Ha szereted a dinamikus, folyamatos mozgást, ami összeköti a légzést és a mozdulatokat.</li>
+            <li><strong>Baba-mama Jóga:</strong> Ha szülés után szeretnél regenerálódni, és a babáddal jönnél együtt edzeni.</li>
+            <li><strong>Regeneráló Jóga:</strong> Ha pihenésre, stresszoldásra van szükséged, és mély ellazulást keresel passzív pózokban.</li>
+        </ul>
+    </div>
+
+</section>
+
+<script src="deepbreath.js"></script>
+
+<footer>
+    <p>© 2025 DeepBreath Stúdió</p>
+</footer>
+</body>
+</html>
